@@ -1,5 +1,5 @@
 # Aufgabe: Implementierung von Hash-Verfahren und Aufzählen der Kollisionen
-
+Notiz: Auf [GitHub](https://github.com/StarMiner99/hashtabelle) wird das Dokument wesentlich schöner formatiert.
 ## Beschreibung Implementierung
 Die gegebene implementierung nutzt das einfache Divisions-Rest Verfahren
 
@@ -74,6 +74,7 @@ Durchschnittliche Kollisionen: 1000
 Die Kollisionsrate scheint sich durchschnittlich dem jeweiligen Füllstand anzunähern.
 
 ## Verwendetes Programm
+(Auf GitHub [hier](https://github.com/StarMiner99/hashtabelle) zu finden.)
 ```rust
 use std::array::from_fn;
 
