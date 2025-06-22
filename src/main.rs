@@ -2,27 +2,15 @@ use std::array::from_fn;
 
 use rand::RngCore;
 
-const TABLE_SIZE: usize = 101;
-
-#[derive(Debug)]
-struct TableField {
-    key: u32,
-    value: i32,
-}
-
-#[derive(Debug)]
-struct HashTable {
-    fields: [Option<TableField>; TABLE_SIZE],
-}
 
 fn main() {
     let mut rand = rand::rng();
     let mut hash_table = HashTable::new_empty();
 
-    // fill hash_table until fill level is at least p
-    let p = 0.9;
-    let fill_amount = (TABLE_SIZE as f64 * p) as usize;
-    println!("Filling {} of {} slots.", fill_amount, TABLE_SIZE);
+    // fill hash_table by fill_level*100 percent
+    let fill_level = 0.95;
+    let fill_amount = (TABLE_SIZE as f64 * fill_level) as usize;
+    println!("Filling {} of {} fields.", fill_amount, TABLE_SIZE);
 
     let mut cnt = 0;
     while hash_table.get_filled_count() < fill_amount { // we probably already have some collisions so we need to check if it really filled it up
@@ -34,8 +22,8 @@ fn main() {
         cnt += 1;
     }
 
-    println!("Table: {:?}", hash_table);
-    println!("Filled Fields: {}", hash_table.get_filled_count());
+    //println!("Table: {:?}", hash_table);
+    println!("Filled Fields: {}\n", hash_table.get_filled_count());
 
     // acces the hash table and count collisions
     let access_cnt = 1000;
@@ -55,6 +43,19 @@ fn main() {
     }
 
     println!("Accessed table {access_cnt} times:\nCollisions: {}\nMatches: {}\nEmpty: {}", collisions, matches, empty);
+}
+
+const TABLE_SIZE: usize = 101;
+
+#[derive(Debug)]
+struct TableField {
+    key: u32,
+    value: i32,
+}
+
+#[derive(Debug)]
+struct HashTable {
+    fields: [Option<TableField>; TABLE_SIZE],
 }
 
 impl HashTable {
