@@ -1,5 +1,12 @@
 # Aufgabe: Implementierung von Hash-Verfahren und Aufzählen der Kollisionen
 Notiz: Auf [GitHub](https://github.com/StarMiner99/hashtabelle) wird das Dokument wesentlich schöner formatiert.
+
+Name: Thijs Boersma
+
+Kurs: TINF24B1
+
+Datum: 22 Juni 2025
+
 ## Beschreibung Implementierung
 Die gegebene implementierung nutzt das einfache Divisions-Rest Verfahren
 
