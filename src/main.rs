@@ -37,9 +37,10 @@ fn main() {
     println!("Table: {:?}", hash_table);
     println!("Filled Fields: {}", hash_table.get_filled_count());
 
+    // acces the hash table and count collisions
     let access_cnt = 1000;
     let mut collisions = 0;
-    let mut matches = 0;
+    let mut matches = 0; // amount of random key guesses (key exists in table)
     let mut empty = 0;
 
     for _ in 0..access_cnt {
@@ -69,13 +70,14 @@ impl HashTable {
     }
     
     fn hash(key: u32) -> usize {
-        get_mod_hash(key)
+        get_mod_hash(key) // call desired hash function
     }
     
     fn new_empty() -> Self {
         Self { fields: from_fn(|_| None ) }
     }
 
+    // counts the fields that are empty
     fn get_filled_count(&self) -> usize {
         let mut filled_counter: usize = 0;
         self.fields.iter().for_each(|v| {
@@ -89,7 +91,7 @@ impl HashTable {
 
 }
 
-
+// simple modulo hash function
 fn get_mod_hash(key: u32) -> usize {
     let hash = key % (TABLE_SIZE as u32);
     hash as usize
